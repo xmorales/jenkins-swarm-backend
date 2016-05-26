@@ -88,7 +88,7 @@ freeStyleJob("_docker-slave-builder") {
         version("1")
         }
       }
-
+      shell("[ -f setup-docker-template.groovy ] || curl ${auxRepoFile} -o setup-docker-template.groovy")
       systemGroovyScriptFile("setup-docker-template.groovy"){
         binding("templateName","${registry}/${clusterName}/${componentName}")
         binding("memoryLimit",ram)
